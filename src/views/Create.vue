@@ -3,9 +3,12 @@ import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
+const router = useRouter();
+
 const formNameErr = ref("");
 const formCountErr = ref("");
 const formDecayErr = ref("");
+const formImgErr = ref("");
 
 const formData = new FormData();
 const image = ref(null);
@@ -19,6 +22,7 @@ function create() {
   //正則表達驗證
   const nameCheck = /^[A-Za-z0-9\u4e00-\u9fa5]+$/;
   const numberCheck = /^(?:10000|\d{1,4})$/;
+  const hasImg = formData.has("img");
   if (!nameCheck.test(form.name)) {
     formNameErr.value = "中文,英文,0~9";
     return;
@@ -38,6 +42,11 @@ function create() {
     formDecayErr.value = "";
   }
 
+  if (!hasImg) {
+    formImgErr.value = "圖片";
+    return;
+  }
+
   formData.append("name", form.name);
   formData.append("count", form.count);
   formData.append("decay", form.decay);
@@ -52,11 +61,10 @@ function create() {
 
       alert(response.data.message + ",請耐心等待驗證");
 
-      const router = useRouter();
       router.push("/");
     })
     .catch((error) => {
-      console.error(error.response.data.message);
+      console.error(error.response);
     });
 }
 function getCookieValue() {
@@ -76,7 +84,7 @@ const handleFileChange = (event) => {
   if (file) {
     image.value = file;
     formData.append("img", file);
-    console.log("Selected file:", file);
+    // console.log("Selected file:", file);
   } else {
     image.value = null;
     console.log("User canceled file selection");
@@ -131,7 +139,7 @@ const handleFileChange = (event) => {
             @change="handleFileChange"
             accept=".jpg, .png"
           />
-          <span style="color: red"></span>
+          <span style="color: red">{{ formImgErr }}</span>
         </div>
 
         <button type="button" @click="create" class="btn btn-primary">

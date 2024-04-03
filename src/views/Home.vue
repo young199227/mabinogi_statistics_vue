@@ -11,7 +11,7 @@ function getIndexData() {
   axios
     .get(window.apiDns + "/indexData")
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       indexData.value = response.data.data;
     })
     .catch((error) => {

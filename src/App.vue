@@ -12,7 +12,7 @@ function getCookie() {
   axios
     .get(window.apiDns + "/token")
     .then((response) => {
-      console.log(response.data.data);
+      // console.log(response.data.data);
 
       const date = new Date();
       //時間為+5分鐘

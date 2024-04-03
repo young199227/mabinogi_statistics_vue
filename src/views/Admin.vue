@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
-const apiDns = ref(window.apiDns);
+const router = useRouter();
 
 //一進入先拿資料
 getUnverifiedUploads();
@@ -14,26 +14,21 @@ function getUnverifiedUploads() {
   axios
     .get(window.apiDns + "/unverified")
     .then((response) => {
-    //   console.log(response.data);
       unverifiedData.value = response.data;
-    //   console.log(unverifiedData.value);
     })
     .catch((error) => {
       console.error(error);
-      const router = useRouter();
       router.push("/");
     });
 }
 //審核
 function verifyUserUploads(type: number, id: string) {
-  console.log(id + ":" + type);
-
   axios
     .put(window.apiDns + "/verify/" + type, {
       id: id,
     })
     .then((response) => {
-      console.log(response.data);
+    //   console.log(response.data);
       location.reload();
     })
     .catch((error) => {
