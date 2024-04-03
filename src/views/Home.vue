@@ -9,7 +9,7 @@ getIndexData();
 const indexData = ref("");
 function getIndexData() {
   axios
-    .get("http://127.0.0.1:8000/indexData")
+    .get(window.apiDns + "indexData")
     .then((response) => {
       console.log(response.data);
       indexData.value = response.data.data;
@@ -31,7 +31,7 @@ function getIndexData() {
               <tbody>
                 <tr>
                   <td>上傳次數:</td>
-                  <td>{{ indexData.count.user }}</td>
+                  <td>{{ indexData.count.user_count }}</td>
                 </tr>
                 <tr>
                   <td>場次:</td>
