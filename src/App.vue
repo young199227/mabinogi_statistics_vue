@@ -10,7 +10,7 @@ function getCookie() {
     return;
   }
   axios
-    .get(window.apiDns + "token")
+    .get(window.apiDns + "/token")
     .then((response) => {
       console.log(response.data.data);
 

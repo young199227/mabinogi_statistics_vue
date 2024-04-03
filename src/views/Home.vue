@@ -9,7 +9,7 @@ getIndexData();
 const indexData = ref("");
 function getIndexData() {
   axios
-    .get(window.apiDns + "indexData")
+    .get(window.apiDns + "/indexData")
     .then((response) => {
       console.log(response.data);
       indexData.value = response.data.data;

@@ -43,7 +43,7 @@ function create() {
   formData.append("decay", form.decay);
 
   axios
-    .post(window.apiDns + "create", formData)
+    .post(window.apiDns + "/create", formData)
     .then((response) => {
       form.name = "";
       form.count = "";
