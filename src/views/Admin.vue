@@ -8,6 +8,9 @@ const router = useRouter();
 //一進入先拿資料
 getUnverifiedUploads();
 
+//
+alert("方便測試~現在大家都能驗證");
+
 //拿首頁資料
 const unverifiedData = ref("");
 function getUnverifiedUploads() {

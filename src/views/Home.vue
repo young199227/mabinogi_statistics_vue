@@ -64,6 +64,10 @@ function getIndexData() {
               <router-link to="/create" class="btn btn-primary">
                 點我去上傳資料!
               </router-link>
+              <br />
+              <router-link to="/admin" class="btn btn-danger mt-2">
+                管理者驗證
+              </router-link>
             </div>
           </div>
         </div>
