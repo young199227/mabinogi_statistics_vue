@@ -18,6 +18,11 @@ function getUnverifiedUploads() {
     .get(window.apiDns + "/unverified")
     .then((response) => {
       unverifiedData.value = response.data;
+
+      if (response.data == "") {
+        alert("現在沒有待審核資料");
+        router.push("/");
+      }
     })
     .catch((error) => {
       console.error(error);
@@ -31,8 +36,13 @@ function verifyUserUploads(type: number, id: string) {
       id: id,
     })
     .then((response) => {
-    //   console.log(response.data);
-      location.reload();
+      //   console.log(response.data);
+      if (type == 1) {
+        alert("審核通過");
+      } else {
+        alert("審核不通過");
+      }
+      router.push("/");
     })
     .catch((error) => {
       console.error(error);
