@@ -127,7 +127,7 @@ const handleFileChange = (event) => {
           <label for="formFile" class="form-label"
             >圖片：角色照+現在地下城次數(活動面板) 限.jpg.png 5M大小
             <a
-              href="https://capybaby.cc/mabinogi/statistics/img/水豚仔萌萌.jpg"
+              href="https://api.capybaby.cc/storage/images/KaCxkvOvjpcxStgk2Oenro25nogCYeZKhjUvPKv6.jpg"
               class="btn btn-primary"
               target="_blank"
               >範例圖</a
